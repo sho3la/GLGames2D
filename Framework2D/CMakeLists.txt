@@ -1,0 +1,22 @@
+project("Framework2D")
+
+link_libraries(glfw)
+
+include_directories("${GLFW_SOURCE_DIR}/deps")
+
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+
+# list the header files
+set(HEADER_FILES)
+
+
+# list the source files
+set(SOURCE_FILES)
+
+
+set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"
+            "${GLFW_SOURCE_DIR}/deps/glad_gl.c")
+			
+add_library(Framework2D ${HEADER_FILES} ${SOURCE_FILES} ${GLAD_GL})
+
+set_target_properties(Framework2D ${CONSOLE_BINARIES} PROPERTIES FOLDER "Framework2D")
