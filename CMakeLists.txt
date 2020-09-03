@@ -4,3 +4,4 @@ project (GLGames2D)
 
 add_subdirectory(glfw)
 add_subdirectory(Framework2D)
+add_subdirectory(01_SpaceForce2D)
