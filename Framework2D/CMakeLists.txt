@@ -7,11 +7,19 @@ include_directories("${GLFW_SOURCE_DIR}/deps")
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 # list the header files
-set(HEADER_FILES)
+set(HEADER_FILES
+	Engine.h
+	Application.h
+	Window.h
+)
 
 
 # list the source files
-set(SOURCE_FILES)
+set(SOURCE_FILES
+	Engine.cpp
+	Application.cpp
+	Window.cpp
+)
 
 
 set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"

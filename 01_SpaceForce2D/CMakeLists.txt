@@ -9,11 +9,14 @@ include_directories(
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
 # list the header files
-set(HEADER_FILES)
+set(HEADER_FILES
+	Game.h
+)
 
 # list the source files
 set(SOURCE_FILES
 	main.cpp
+	Game.cpp
 )
 
 add_executable(SpaceForce2D WIN32 ${HEADER_FILES} ${SOURCE_FILES})
