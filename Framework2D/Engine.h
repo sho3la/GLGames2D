@@ -1,5 +1,6 @@
 #pragma once
 #include "Application.h"
+#include "Keyboard.h"
 
 class Engine
 {
@@ -20,4 +21,5 @@ private:
 	void render();
 
 	ApplicationPtr m_app;
+	KeyboardPtr m_keyboard;
 };

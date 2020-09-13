@@ -11,6 +11,7 @@ set(HEADER_FILES
 	Engine.h
 	Application.h
 	Window.h
+	Keyboard.h
 )
 
 
@@ -19,6 +20,7 @@ set(SOURCE_FILES
 	Engine.cpp
 	Application.cpp
 	Window.cpp
+	Keyboard.cpp
 )
 
 
