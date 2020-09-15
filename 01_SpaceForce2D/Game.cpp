@@ -18,7 +18,7 @@ void Game::init()
 {
 }
 
-void Game::update()
+void Game::update(TimeStep time)
 {
 	if (Keyboard::getkey(Keyboard::SPACE) == Keyboard::State_Down)
 	{
@@ -28,6 +28,11 @@ void Game::update()
 	{
 		printf("koko is up \n");
 	}
+
+
+	printf("delta time = %f \n", time.deltaTime);
+	printf("elapsed time = %f \n", time.elapsedTime);
+
 }
 
 void Game::render()

@@ -1,6 +1,7 @@
 #pragma once
 #include "Application.h"
 #include "Keyboard.h"
+#include "TimeStep.h"
 
 class Engine
 {
@@ -22,4 +23,9 @@ private:
 
 	ApplicationPtr m_app;
 	KeyboardPtr m_keyboard;
+
+	//timing
+	float deltatime = 0.0f;
+	float lastframe = 0.0f;
+	TimeStep tstep;
 };

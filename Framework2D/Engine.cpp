@@ -45,6 +45,14 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 
 void Engine::gameloop()
 {
+	//per frame time
+	//---------------
+	float currnetframe = (float)glfwGetTime();
+	deltatime = currnetframe - lastframe;
+	lastframe = currnetframe;
+	tstep.deltaTime = deltatime;
+	tstep.elapsedTime = currnetframe;
+
 	update();
 
 	render();
@@ -53,7 +61,7 @@ void Engine::gameloop()
 
 void Engine::update()
 {
-	m_app->update();
+	m_app->update(tstep);
 }
 
 

@@ -16,7 +16,7 @@ void Application::loadResources()
 {
 }
 
-void Application::update()
+void Application::update(TimeStep time)
 {
 }
 

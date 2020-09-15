@@ -1,5 +1,6 @@
 #pragma once
 #include "Window.h"
+#include "TimeStep.h"
 #include <memory>
 
 class Application
@@ -13,7 +14,7 @@ public:
 
 	virtual void init();
 
-	virtual void update();
+	virtual void update(TimeStep time);
 
 	virtual void render();
 

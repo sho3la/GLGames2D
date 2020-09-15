@@ -12,8 +12,8 @@ set(HEADER_FILES
 	Application.h
 	Window.h
 	Keyboard.h
+	TimeStep.h
 )
-
 
 # list the source files
 set(SOURCE_FILES
