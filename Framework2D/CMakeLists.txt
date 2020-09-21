@@ -13,6 +13,10 @@ set(HEADER_FILES
 	Window.h
 	Keyboard.h
 	TimeStep.h
+	GeomtreyFactory.h
+	TextureFactory.h
+	Rectangle.h
+	Texture2D.h
 )
 
 # list the source files
@@ -21,8 +25,11 @@ set(SOURCE_FILES
 	Application.cpp
 	Window.cpp
 	Keyboard.cpp
+	GeomtreyFactory.cpp
+	TextureFactory.cpp
+	Rectangle.cpp
+	Texture2D.cpp
 )
-
 
 set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"
             "${GLFW_SOURCE_DIR}/deps/glad_gl.c")
