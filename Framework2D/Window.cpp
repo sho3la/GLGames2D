@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 
+#include <glm\glm.hpp>
+#include <glm\gtc\matrix_transform.hpp>
+
 Window::Window(const char * title, int width, int height)
 {
 	if (!glfwInit())
@@ -25,6 +28,7 @@ Window::Window(const char * title, int width, int height)
 
 	m_width = width;
 	m_height = height;
+
 }
 
 Window::~Window()

@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Keyboard.h"
 #include "TimeStep.h"
+#include "Camera2D.h"
 
 class Engine
 {
@@ -11,6 +12,8 @@ public:
 	~Engine();
 
 	void start(ApplicationPtr app, const char* window_title, int window_width, int window_height);
+
+	static Camera2DPtr camera2d;
 
 private:
 	void init(const char* window_title, int window_width, int window_height);

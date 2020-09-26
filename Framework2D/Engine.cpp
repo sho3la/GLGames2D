@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include <glad/gl.h>
 
+Camera2DPtr Engine::camera2d;
+
 Engine::Engine()
 {
 
@@ -22,6 +24,8 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 	// create window
 	m_app->m_window = std::make_shared<Window>(window_title, window_width, window_height);
 	m_keyboard		= std::make_shared<Keyboard>();
+
+	camera2d		= std::make_shared<Camera2D>(m_app->m_window->m_width , m_app->m_window->m_height);
 
 	// init opengl
 	gladLoadGL(glfwGetProcAddress);

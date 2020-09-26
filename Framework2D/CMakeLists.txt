@@ -17,6 +17,7 @@ set(HEADER_FILES
 	TextureFactory.h
 	Rectangle.h
 	Texture2D.h
+	Camera2D.h
 )
 
 # list the source files
@@ -29,6 +30,7 @@ set(SOURCE_FILES
 	TextureFactory.cpp
 	Rectangle.cpp
 	Texture2D.cpp
+	Camera2D.cpp
 )
 
 set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"
