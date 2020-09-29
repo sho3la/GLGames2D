@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include <glad/gl.h>
 
-Camera2DPtr Engine::camera2d;
+SpriteRendererPtr Engine::sp_renderer;
 
 Engine::Engine()
 {
@@ -25,10 +25,10 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 	m_app->m_window = std::make_shared<Window>(window_title, window_width, window_height);
 	m_keyboard		= std::make_shared<Keyboard>();
 
-	camera2d		= std::make_shared<Camera2D>(m_app->m_window->m_width , m_app->m_window->m_height);
-
 	// init opengl
 	gladLoadGL(glfwGetProcAddress);
+
+	sp_renderer = std::make_shared<SpriteRenderer>(m_app->m_window->m_width, m_app->m_window->m_height);
 
 	// start gameloop
 	m_app->loadResources();

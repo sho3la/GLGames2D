@@ -18,6 +18,8 @@ set(HEADER_FILES
 	Rectangle.h
 	Texture2D.h
 	Camera2D.h
+	ShaderProgram.h
+	SpriteRenderer.h
 )
 
 # list the source files
@@ -31,6 +33,8 @@ set(SOURCE_FILES
 	Rectangle.cpp
 	Texture2D.cpp
 	Camera2D.cpp
+	ShaderProgram.cpp
+	SpriteRenderer.cpp
 )
 
 set(GLAD_GL "${GLFW_SOURCE_DIR}/deps/glad/gl.h"

@@ -6,16 +6,14 @@
 class Camera2D
 {
 public:
-	Camera2D();
-
-	Camera2D(int width, int height);
-
 	~Camera2D();
 
-	glm::mat4 Projection();
+	static Camera2D* getInstance();
 
+	glm::mat4 Projection(int width, int height);
 private:
-	glm::mat4 projection;
-};
+	Camera2D();
 
-typedef std::shared_ptr<Camera2D> Camera2DPtr;
+	glm::mat4 projection;
+	static Camera2D* m_instance;
+};

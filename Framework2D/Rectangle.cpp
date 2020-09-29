@@ -2,7 +2,8 @@
 
 Rectangle::Rectangle() : 
 	m_position(glm::vec2(0)),
-	m_size(glm::vec2(0))
+	m_size(glm::vec2(0)),
+	rotation(0)
 {
 }
 
@@ -12,6 +13,7 @@ Rectangle::Rectangle(float x, float y, float width, float height)
 	m_position.y = y;
 	m_size.x = width;
 	m_size.y = height;
+	rotation = 0;
 
 	buffers = GeomtreyFactory::GetRect();
 }
@@ -20,6 +22,7 @@ Rectangle::Rectangle(glm::vec2 position, glm::vec2 size)
 {
 	m_position = position;
 	m_size = size;
+	rotation = 0;
 
 	buffers = GeomtreyFactory::GetRect();
 }

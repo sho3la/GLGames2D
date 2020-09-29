@@ -3,6 +3,7 @@
 #include "Keyboard.h"
 #include "TimeStep.h"
 #include "Camera2D.h"
+#include "SpriteRenderer.h"
 
 class Engine
 {
@@ -13,7 +14,7 @@ public:
 
 	void start(ApplicationPtr app, const char* window_title, int window_width, int window_height);
 
-	static Camera2DPtr camera2d;
+	static SpriteRendererPtr sp_renderer;
 
 private:
 	void init(const char* window_title, int window_width, int window_height);
