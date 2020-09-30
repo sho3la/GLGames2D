@@ -20,7 +20,6 @@ void Game::loadResources()
 	rect->m_position += 100;
 
 	rect2 = std::make_shared<Rectangle>(glm::vec2(350, 50), glm::vec2(100, 100));
-	rect2->m_size += 200;
 }
 
 void Game::init()
@@ -50,5 +49,5 @@ void Game::render()
 {
 	Engine::sp_renderer->Draw(nullptr, *rect);
 
-	Engine::sp_renderer->Draw(tex.get(), *rect2, glm::vec4(1,0,1,1));
+	Engine::sp_renderer->Draw(tex.get(), *rect2, glm::vec4(1,1,1,1));
 }

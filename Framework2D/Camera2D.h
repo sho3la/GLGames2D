@@ -8,12 +8,9 @@ class Camera2D
 public:
 	~Camera2D();
 
-	static Camera2D* getInstance();
+	static Camera2D getInstance();
 
 	glm::mat4 Projection(int width, int height);
 private:
 	Camera2D();
-
-	glm::mat4 projection;
-	static Camera2D* m_instance;
 };

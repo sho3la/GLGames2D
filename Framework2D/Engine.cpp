@@ -28,6 +28,9 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 	// init opengl
 	gladLoadGL(glfwGetProcAddress);
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	sp_renderer = std::make_shared<SpriteRenderer>(m_app->m_window->m_width, m_app->m_window->m_height);
 
 	// start gameloop
@@ -71,7 +74,7 @@ void Engine::update()
 
 void Engine::render()
 {
-	glClearColor(0, 0, 0, 0);
+	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	m_app->render();

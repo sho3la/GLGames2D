@@ -62,7 +62,7 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect)
 	shaderptr->use();
 
 	auto camera = Camera2D::getInstance();
-	glm::mat4 proj = camera->Projection(m_width, m_height);
+	glm::mat4 proj = camera.Projection(m_width, m_height);
 
 	shaderptr->Send_Mat4("projection", proj);
 
@@ -94,7 +94,7 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, glm::vec4 color
 	shaderptr->use();
 
 	auto camera = Camera2D::getInstance();
-	glm::mat4 proj = camera->Projection(m_width, m_height);
+	glm::mat4 proj = camera.Projection(m_width, m_height);
 
 	shaderptr->Send_Mat4("projection", proj);
 
