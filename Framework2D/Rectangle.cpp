@@ -29,6 +29,7 @@ Rectangle::Rectangle(glm::vec2 position, glm::vec2 size)
 
 Rectangle::~Rectangle()
 {
+	GeomtreyFactory::DeleteRect(buffers);
 }
 
 glm::vec2 Rectangle::Centre()

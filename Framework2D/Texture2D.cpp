@@ -8,4 +8,5 @@ Texture2D::Texture2D(const char * filename)
 
 Texture2D::~Texture2D()
 {
+	TextureFactory::DeleteTexture2D(ID);
 }

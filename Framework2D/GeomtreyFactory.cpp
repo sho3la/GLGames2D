@@ -67,3 +67,11 @@ GBuffer GeomtreyFactory::GetRect()
 
 	return result;
 }
+
+void GeomtreyFactory::DeleteRect(GBuffer buffers)
+{
+	glDeleteBuffers(1, &buffers.VBO);
+	glDeleteBuffers(1, &buffers.CBO);
+	glDeleteBuffers(1, &buffers.UVBO);
+	glDeleteVertexArrays(1, &buffers.VAO);
+}

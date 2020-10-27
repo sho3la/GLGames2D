@@ -12,4 +12,5 @@ class GeomtreyFactory
 {
 public:
 	static GBuffer GetRect();
+	static void DeleteRect(GBuffer buffers);
 };

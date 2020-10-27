@@ -19,5 +19,5 @@ public:
 	void render() override;
 
 	std::shared_ptr<Texture2D> tex;
-	std::shared_ptr<Rectangle> rect, rect2;
+	std::shared_ptr<Rectangle> rect2;
 };

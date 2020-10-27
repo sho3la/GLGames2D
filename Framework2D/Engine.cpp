@@ -10,7 +10,7 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-
+	sp_renderer.reset();
 }
 
 void Engine::start(ApplicationPtr app, const char* window_title, int window_width, int window_height)
