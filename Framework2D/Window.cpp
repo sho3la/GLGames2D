@@ -24,7 +24,7 @@ Window::Window(const char * title, int width, int height)
 	}
 
 	glfwMakeContextCurrent(m_window);
-	glfwSwapInterval(1);
+	glfwSwapInterval(0);
 
 	m_width = width;
 	m_height = height;

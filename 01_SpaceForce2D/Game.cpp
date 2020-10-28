@@ -16,10 +16,12 @@ void Game::loadResources()
 	tex = std::make_shared<Texture2D>("E:/_Vedios/workspace/ship.png");
 
 	rect2 = std::make_shared<Rectangle>(glm::vec2(350, 50), glm::vec2(100, 100));
+
 }
 
 void Game::init()
 {
+	Engine::set_limit(10);
 }
 
 void Game::update(TimeStep time)
@@ -41,5 +43,5 @@ void Game::update(TimeStep time)
 
 void Game::render()
 {
-	//Engine::sp_renderer->Draw(tex.get(), *rect2, glm::vec4(1,1,1,1));
+	Engine::sp_renderer->Draw(tex.get(), *rect2, glm::vec4(1,1,1,1));
 }

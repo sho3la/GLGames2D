@@ -2,6 +2,7 @@
 #include <glad/gl.h>
 
 SpriteRendererPtr Engine::sp_renderer;
+float Engine::m_frame_limit = 60.0f; /*60 fps*/
 
 Engine::Engine()
 {
@@ -17,6 +18,11 @@ void Engine::start(ApplicationPtr app, const char* window_title, int window_widt
 {
 	m_app = app;
 	init(window_title,window_width,window_height);
+}
+
+void Engine::set_limit(int frame_limit)
+{
+	m_frame_limit = frame_limit;
 }
 
 void Engine::init(const char* window_title, int window_width, int window_height)
@@ -45,7 +51,6 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 	{
 		gameloop();
 
-		glfwSwapBuffers(m_app->m_window->m_window);
 		glfwPollEvents();
 	}
 }
@@ -59,10 +64,17 @@ void Engine::gameloop()
 	lastframe = currnetframe;
 	tstep.deltaTime = deltatime;
 	tstep.elapsedTime = currnetframe;
+	frame_limit_counter += deltatime;
 
-	update();
+	if (frame_limit_counter > 1.0f / m_frame_limit)
+	{
+		update();
 
-	render();
+		render();
+
+		frame_limit_counter = 0;
+	}
+
 }
 
 
@@ -78,4 +90,6 @@ void Engine::render()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	m_app->render();
+
+	glfwSwapBuffers(m_app->m_window->m_window);
 }
