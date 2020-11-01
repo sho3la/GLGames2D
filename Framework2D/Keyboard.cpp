@@ -65,6 +65,14 @@ void Keyboard::KeyboardFunc(GLFWwindow * window, int key, int scancode, int acti
 			else m_data.erase(in.first);
 			break;
 		}
+		case GLFW_KEY_ENTER:
+		{
+			auto flag = (action == GLFW_PRESS || action == GLFW_REPEAT) ? KeyState::State_Down : KeyState::State_Up;
+			auto in = std::make_pair(Keys::ENTER, flag);
+			if (flag == KeyState::State_Down) m_data.insert(in);
+			else m_data.erase(in.first);
+			break;
+		}
 		case GLFW_KEY_ESCAPE:
 		{
 			auto flag = (action == GLFW_PRESS || action == GLFW_REPEAT) ? KeyState::State_Down : KeyState::State_Up;

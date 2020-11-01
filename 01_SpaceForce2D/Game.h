@@ -1,7 +1,6 @@
 #pragma once
 #include "Application.h"
-#include "Texture2D.h"
-#include "Rectangle.h"
+#include "State.h"
 
 class Game : public Application
 {
@@ -18,6 +17,5 @@ public:
 
 	void render() override;
 
-	std::shared_ptr<Texture2D> tex;
-	std::shared_ptr<Rectangle> rect2;
+	State* current_state;
 };

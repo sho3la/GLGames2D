@@ -11,12 +11,17 @@ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 # list the header files
 set(HEADER_FILES
 	Game.h
+	State.h
+	IntroState.h
+	GameState.h
 )
 
 # list the source files
 set(SOURCE_FILES
 	main.cpp
 	Game.cpp
+	IntroState.cpp
+	GameState.cpp
 )
 
 add_executable(SpaceForce2D WIN32 ${HEADER_FILES} ${SOURCE_FILES})
