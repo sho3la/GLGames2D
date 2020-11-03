@@ -20,7 +20,6 @@ void Game::loadResources()
 
 void Game::init()
 {
-	Engine::set_limit(10);
 }
 
 void Game::update(TimeStep time)

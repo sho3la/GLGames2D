@@ -1,6 +1,6 @@
 #pragma once
 #include "State.h"
-#include <memory>
+#include "Player.h"
 
 class GameState : public State
 {
@@ -13,8 +13,5 @@ public:
 
 	void draw() override;
 
-
-private:
-	std::shared_ptr<Texture2D> tex2;
-	std::shared_ptr<Rectangle> rect;
+	std::shared_ptr<Player> m_player;
 };

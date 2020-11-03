@@ -8,6 +8,7 @@ class Game;
 class State
 {
 public:
+	virtual ~State() {}
 	virtual void update(Game* game, TimeStep time) = 0;
 	virtual void draw() = 0;
 };

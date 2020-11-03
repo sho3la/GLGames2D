@@ -66,10 +66,10 @@ void Engine::gameloop()
 	tstep.elapsedTime = currnetframe;
 	frame_limit_counter += deltatime;
 
+	update();
+
 	if (frame_limit_counter > 1.0f / m_frame_limit)
 	{
-		update();
-
 		render();
 
 		frame_limit_counter = 0;

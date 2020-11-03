@@ -4,8 +4,7 @@
 
 GameState::GameState()
 {
-	tex2 = std::make_shared<Texture2D>("E:\\_Vedios\\workspace\\ship.png");
-	rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(100, 100));
+	m_player = std::make_shared<Player>();
 }
 
 GameState::~GameState()
@@ -14,10 +13,10 @@ GameState::~GameState()
 
 void GameState::update(Game* game, TimeStep time)
 {
-
+	m_player->update(time.deltaTime);
 }
 
 void GameState::draw()
 {
-	Engine::sp_renderer->Draw(tex2.get(), *rect, glm::vec4(1));
+	m_player->draw();
 }

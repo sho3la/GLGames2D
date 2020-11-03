@@ -5,7 +5,7 @@
 
 IntroState::IntroState()
 {
-	tex = std::make_shared<Texture2D>("E:\\_Vedios\\workspace\\intro_screen.jpg");
+	tex = std::make_shared<Texture2D>("res/intro_screen.jpg");
 	rect = std::make_shared<Rectangle>(glm::vec2(0,0), glm::vec2(900,900));
 }
 
