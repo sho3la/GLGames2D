@@ -19,6 +19,7 @@ set(HEADER_FILES
 	IntroState.h
 	GameState.h
 	Player.h
+	Background.h
 )
 
 # list the source files
@@ -28,6 +29,7 @@ set(SOURCE_FILES
 	IntroState.cpp
 	GameState.cpp
 	Player.cpp
+	Background.cpp
 )
 
 add_executable(SpaceForce2D WIN32 ${HEADER_FILES} ${SOURCE_FILES} ${ICON})

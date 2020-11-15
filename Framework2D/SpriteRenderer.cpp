@@ -112,6 +112,7 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, glm::vec4 color
 	{
 		glBindTexture(GL_TEXTURE_2D, texture->ID);
 		shaderptr->Send_vec4("hasTexture", glm::vec4(1.0f));
+		shaderptr->Send_vec2("tile_offset", glm::vec2(0.0f));
 	}
 	else
 	{
@@ -119,5 +120,37 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, glm::vec4 color
 	}
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
 
+void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, float uv_x, float uv_y, glm::vec4 color)
+{
+	shaderptr->use();
+
+	auto camera = Camera2D::getInstance();
+	glm::mat4 proj = camera.Projection(m_width, m_height);
+
+	shaderptr->Send_Mat4("projection", proj);
+
+	glm::mat4 model_mat = glm::mat4(1.0f);
+	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
+		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
+
+	shaderptr->Send_Mat4("model_matrx", model_mat);
+	shaderptr->Send_vec4("vertex_color", color);
+
+	glBindVertexArray(rect.buffers.VAO);
+
+	if (texture)
+	{
+		glBindTexture(GL_TEXTURE_2D, texture->ID);
+		shaderptr->Send_vec4("hasTexture", glm::vec4(1.0f));
+		shaderptr->Send_vec2("tile_offset", glm::vec2(uv_x, uv_y));
+	}
+	else
+	{
+		shaderptr->Send_vec4("hasTexture", glm::vec4(0.0f));
+	}
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 }

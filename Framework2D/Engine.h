@@ -17,6 +17,7 @@ public:
 	static SpriteRendererPtr sp_renderer;
 
 	static void set_limit(int frame_limit);
+	static glm::vec2 window_size();
 private:
 	void init(const char* window_title, int window_width, int window_height);
 
@@ -35,4 +36,5 @@ private:
 	float frame_limit_counter = 0.0f;
 	TimeStep tstep;
 	static float m_frame_limit;
+	static glm::vec2 windowSize;
 };

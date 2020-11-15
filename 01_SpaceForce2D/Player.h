@@ -20,4 +20,6 @@ public:
 
 	std::shared_ptr<Texture2D> ship_texture;
 	std::shared_ptr<Rectangle> ship_rect;
+
+	float movement_speed;
 };

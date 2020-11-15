@@ -3,6 +3,7 @@
 
 SpriteRendererPtr Engine::sp_renderer;
 float Engine::m_frame_limit = 60.0f; /*60 fps*/
+glm::vec2 Engine::windowSize(0);
 
 Engine::Engine()
 {
@@ -25,6 +26,11 @@ void Engine::set_limit(int frame_limit)
 	m_frame_limit = frame_limit;
 }
 
+glm::vec2 Engine::window_size()
+{
+	return windowSize;
+}
+
 void Engine::init(const char* window_title, int window_width, int window_height)
 {
 	// create window
@@ -45,6 +51,8 @@ void Engine::init(const char* window_title, int window_width, int window_height)
 	m_app->init();
 
 	glfwSetKeyCallback(m_app->m_window->m_window, &Keyboard::KeyboardFunc);
+
+	windowSize = glm::vec2(m_app->m_window->m_width, m_app->m_window->m_height);
 
 	// mainloop
 	while (!glfwWindowShouldClose(m_app->m_window->m_window))

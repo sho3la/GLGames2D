@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Engine.h"
 
-Player::Player()
+Player::Player() : movement_speed(700.0f)
 {
 	ship_texture = std::make_shared<Texture2D>("res/ship.png");
 	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(100, 100));
@@ -25,20 +25,18 @@ void Player::move(float time)
 {
 	if(Keyboard::getkey(Keyboard::ARROW_LEFT) == Keyboard::State_Down)
 	{
-		ship_rect->m_position.x -= time * 1000;
+		ship_rect->m_position.x -= time * movement_speed;
 	}
 	if (Keyboard::getkey(Keyboard::ARROW_RIGHT) == Keyboard::State_Down)
 	{
-		ship_rect->m_position.x += time * 1000;
+		ship_rect->m_position.x += time * movement_speed;
 	}
 	if (Keyboard::getkey(Keyboard::ARROW_UP) == Keyboard::State_Down)
 	{
-		ship_rect->m_position.y -= time * 1000;
+		ship_rect->m_position.y -= time * movement_speed;
 	}
 	if (Keyboard::getkey(Keyboard::ARROW_DOWN) == Keyboard::State_Down)
 	{
-		ship_rect->m_position.y += time * 1000;
+		ship_rect->m_position.y += time * movement_speed;
 	}
-
-	printf("ship_rect->m_position.x = %f \n", ship_rect->m_position.x);
 }
