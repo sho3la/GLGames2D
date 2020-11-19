@@ -34,7 +34,7 @@ Rectangle::~Rectangle()
 
 glm::vec2 Rectangle::Centre()
 {
-	return glm::vec2();
+	return glm::vec2(m_position.x + (m_size.x / 2), m_position.y + (m_size.y / 2));
 }
 
 bool Rectangle::Contain(glm::vec2 point)

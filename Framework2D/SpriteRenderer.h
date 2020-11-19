@@ -16,6 +16,7 @@ public:
 	void Draw(Texture2D *texture, Rectangle& rect);
 	void Draw(Texture2D *texture, Rectangle& rect, glm::vec4 color);
 	void Draw(Texture2D *texture, Rectangle& rect, float uv_x, float uv_y, glm::vec4 color);
+	void Draw(Texture2D *texture, Rectangle& rect, Rectangle& uv_rect, glm::vec4 color);
 
 private:
 	int m_width , m_height;

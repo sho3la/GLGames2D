@@ -3,6 +3,7 @@
 #include "Rectangle.h"
 
 #include <memory>
+#include <vector>
 
 class Player
 {
@@ -18,8 +19,17 @@ public:
 
 	void move(float time);
 
+	void animate(float time);
+
 	std::shared_ptr<Texture2D> ship_texture;
 	std::shared_ptr<Rectangle> ship_rect;
 
+	std::shared_ptr<Texture2D> enginefire_texture;
+	std::shared_ptr<Rectangle> enginefire_rect;
+	std::vector<Rectangle> enginefire_frames;
+
+	int current_frame;
+	float frame_time;
+	float time_counter;
 	float movement_speed;
 };
