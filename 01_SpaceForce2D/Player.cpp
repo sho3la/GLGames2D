@@ -4,7 +4,7 @@
 Player::Player() : movement_speed(700.0f) , current_frame(0), frame_time(0.2f) , time_counter(0)
 {
 	ship_texture = std::make_shared<Texture2D>("res/ship.png");
-	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(100, 100));
+	ship_rect = std::make_shared<Rectangle>(glm::vec2(350, 750), ship_texture->size / 2.5f);
 
 	enginefire_texture = std::make_shared<Texture2D>("res/enginefire_animation.png");
 	enginefire_rect = std::make_shared<Rectangle>(glm::vec2(0), glm::vec2(0));
@@ -57,8 +57,8 @@ void Player::move(float time)
 	}
 
 	glm::vec2 enginefire_pos = ship_rect->Centre();
-	enginefire_pos.x -= 6;
-	enginefire_pos.y += (ship_rect->m_size.y / 2) - 3;
+	enginefire_pos.x -= 4;
+	enginefire_pos.y += (ship_rect->m_size.y / 2) - 5;
 	enginefire_rect->m_position = enginefire_pos;
 }
 
@@ -69,7 +69,7 @@ void Player::animate(float time)
 	if (time_counter > frame_time)
 	{
 		current_frame = (current_frame + 1) % (enginefire_frames.size());
-		enginefire_rect->m_size = enginefire_frames[current_frame].m_size / 1.5f;
+		enginefire_rect->m_size = enginefire_frames[current_frame].m_size / 2.0f;
 		time_counter = 0;
 	}
 }
