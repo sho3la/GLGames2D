@@ -19,6 +19,9 @@ Player::Player() : movement_speed(700.0f) , current_frame(0), frame_time(0.2f) ,
 
 	enginefire_frames.push_back(frame1);
 	enginefire_frames.push_back(frame2);
+
+	bullet_texture = std::make_shared<Texture2D>("res/ship_bullet.png");
+	ship_gun = std::make_shared<Gun>(bullet_texture.get(), glm::vec2(0,1));
 }
 
 Player::~Player()
@@ -29,12 +32,19 @@ void Player::update(float time)
 {
 	animate(time);
 	move(time);
+
+	if (Keyboard::getkey(Keyboard::SPACE) == Keyboard::State_Down)
+	{
+		ship_gun->shot(ship_rect->Centre());
+	}
+	ship_gun->update(time);
 }
 
 void Player::draw()
 {
 	Engine::sp_renderer->Draw(ship_texture.get(), *ship_rect, glm::vec4(1));
 	Engine::sp_renderer->Draw(enginefire_texture.get(), *enginefire_rect, enginefire_frames[current_frame], glm::vec4(1));
+	ship_gun->draw();
 }
 
 void Player::move(float time)
