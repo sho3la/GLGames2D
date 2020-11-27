@@ -21,6 +21,7 @@ set(HEADER_FILES
 	Player.h
 	Background.h
 	Gun.h
+	Enemy.h
 )
 
 # list the source files
@@ -32,7 +33,7 @@ set(SOURCE_FILES
 	Player.cpp
 	Background.cpp
 	Gun.cpp
-
+	Enemy.cpp
 )
 
 add_executable(SpaceForce2D WIN32 ${HEADER_FILES} ${SOURCE_FILES} ${ICON})
