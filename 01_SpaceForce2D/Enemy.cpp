@@ -1,27 +1,43 @@
 #include "Enemy.h"
 #include "Engine.h"
 
-Enemy::Enemy() : movement_speed(700.0f), current_frame(0), frame_time(0.2f), time_counter(0)
+Enemy::Enemy(Texture2D* sprite) : 
+	movement_speed(700.0f),
+	current_frame(0),
+	frame_time(0.2f),
+	time_counter(0)
 {
-	ship_texture = std::make_shared<Texture2D>("res/enemy.png");
-	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), ship_texture->size / 2.5f);
 
-	enginefire_texture = std::make_shared<Texture2D>("res/enginefire_animation.png");
+	sprite_tex = sprite;
+
+	// enemy rectangle : 0,0,145,186
+	// enemy rectangle flipped : 328,151,145,186
+	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(145, 186) / 2.5f);
+
 	enginefire_rect = std::make_shared<Rectangle>(glm::vec2(0), glm::vec2(0));
 
+	/*
+	fireframe2 : 185,196,21,72
+	fireframe1 : 185,278,21,56
+	*/
+
+	/*
+	fireframe2 fliped: 267,69,21,72
+	fireframe1 fliped: 267,3,21,56
+
+	*/
 	Rectangle frame1;
-	frame1.m_position = glm::vec2(15, 10);
-	frame1.m_size = glm::vec2(25, 60);
+	frame1.m_position = glm::vec2(267, 69);
+	frame1.m_size = glm::vec2(21, 56);
 
 	Rectangle frame2;
-	frame2.m_position = glm::vec2(80, 5);
-	frame2.m_size = glm::vec2(22, 75);
+	frame2.m_position = glm::vec2(267, 3);
+	frame2.m_size = glm::vec2(21, 72);
 
 	enginefire_frames.push_back(frame1);
 	enginefire_frames.push_back(frame2);
 
-	bullet_texture = std::make_shared<Texture2D>("res/ship_bullet.png");
-	ship_gun = std::make_shared<Gun>(bullet_texture.get(), glm::vec2(0, 1));
+	ship_gun = std::make_shared<Gun>(sprite_tex, glm::vec2(0, 1));
 }
 
 Enemy::~Enemy()
@@ -41,8 +57,8 @@ void Enemy::update(float time)
 
 void Enemy::draw()
 {
-	Engine::sp_renderer->Draw(ship_texture.get(), *ship_rect, glm::vec2(-1), glm::vec4(1));
-	Engine::sp_renderer->Draw(enginefire_texture.get(), *enginefire_rect, enginefire_frames[current_frame], glm::vec2(-1), glm::vec4(1));
+	Engine::sp_renderer->Draw(sprite_tex, *ship_rect, Rectangle(328, 151, 145, 186), glm::vec2(-1), glm::vec4(1));
+	Engine::sp_renderer->Draw(sprite_tex, *enginefire_rect, enginefire_frames[current_frame], glm::vec2(-1), glm::vec4(1));
 	ship_gun->draw();
 }
 

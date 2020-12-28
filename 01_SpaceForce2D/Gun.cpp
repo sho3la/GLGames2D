@@ -1,9 +1,10 @@
 #include "Gun.h"
 #include "Engine.h"
 
-Gun::Gun(Texture2D * bullet_tex, glm::vec2 fire_direction)
+Gun::Gun(Texture2D * sprite, glm::vec2 fire_direction)
 {
-	m_bullet_tex = bullet_tex;
+	// bluebullet rectangle: 155,109,69,68
+	m_bullet_tex = sprite;
 	counter = 0;
 	gunspeed = 7.0f;
 	bullet_speed = 700.0f;
@@ -20,7 +21,7 @@ void Gun::shot(glm::vec2 position)
 	{
 		position.y -= 10;
 		position.x -= 7;
-		auto rect = std::make_shared<Rectangle>(position, m_bullet_tex->size / 5.0f);
+		auto rect = std::make_shared<Rectangle>(position, glm::vec2(69, 68) / 5.0f);
 		m_bullet_rects.push_back(rect);
 		counter = 0;
 	}
@@ -43,6 +44,6 @@ void Gun::update(float time)
 void Gun::draw()
 {
 	for (auto rect : m_bullet_rects)
-		Engine::sp_renderer->Draw(m_bullet_tex, *rect);
+		Engine::sp_renderer->Draw(m_bullet_tex, *rect, Rectangle(155, 109, 69, 68), glm::vec4(1));
 }
 

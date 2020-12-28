@@ -1,0 +1,9 @@
+enemy,0,0,145,186
+monster,235,0,238,241
+player,0,196,175,141
+redbullet,155,0,70,73
+fireframe2,185,196,21,72
+fireframe1,185,278,21,56
+hud,235,251,238,71
+lifecard,155,83,18,16
+bluebullet,155,109,69,68

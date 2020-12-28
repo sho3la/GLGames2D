@@ -1,27 +1,35 @@
 #include "Player.h"
 #include "Engine.h"
 
-Player::Player() : movement_speed(700.0f) , current_frame(0), frame_time(0.2f) , time_counter(0)
+Player::Player(Texture2D* sprite) :
+	movement_speed(700.0f) ,
+	current_frame(0),
+	frame_time(0.2f),
+	time_counter(0)
 {
-	ship_texture = std::make_shared<Texture2D>("res/ship.png");
-	ship_rect = std::make_shared<Rectangle>(glm::vec2(350, 750), ship_texture->size / 2.5f);
+	sprite_tex = sprite;
 
-	enginefire_texture = std::make_shared<Texture2D>("res/enginefire_animation.png");
+	// player rectangle : 0,196,175,141
+	ship_rect = std::make_shared<Rectangle>(glm::vec2(350, 750), glm::vec2(175, 141) / 2.5f);
+
 	enginefire_rect = std::make_shared<Rectangle>(glm::vec2(0), glm::vec2(0));
 
+	/*
+	fireframe2 : 185,196,21,72
+	fireframe1 : 185,278,21,56
+	*/
 	Rectangle frame1;
-	frame1.m_position = glm::vec2(15,10);
-	frame1.m_size = glm::vec2(25, 60);
+	frame1.m_position = glm::vec2(185, 278);
+	frame1.m_size = glm::vec2(21, 56);
 
 	Rectangle frame2;
-	frame2.m_position = glm::vec2(80, 5);
-	frame2.m_size = glm::vec2(22, 75);
+	frame2.m_position = glm::vec2(185, 196);
+	frame2.m_size = glm::vec2(21, 72);
 
 	enginefire_frames.push_back(frame1);
 	enginefire_frames.push_back(frame2);
 
-	bullet_texture = std::make_shared<Texture2D>("res/ship_bullet.png");
-	ship_gun = std::make_shared<Gun>(bullet_texture.get(), glm::vec2(0,1));
+	ship_gun = std::make_shared<Gun>(sprite_tex, glm::vec2(0,1));
 }
 
 Player::~Player()
@@ -42,8 +50,8 @@ void Player::update(float time)
 
 void Player::draw()
 {
-	Engine::sp_renderer->Draw(ship_texture.get(), *ship_rect, glm::vec4(1));
-	Engine::sp_renderer->Draw(enginefire_texture.get(), *enginefire_rect, enginefire_frames[current_frame], glm::vec4(1));
+	Engine::sp_renderer->Draw(sprite_tex, *ship_rect, Rectangle(0, 196, 175, 141), glm::vec4(1));
+	Engine::sp_renderer->Draw(sprite_tex, *enginefire_rect, enginefire_frames[current_frame], glm::vec4(1));
 	ship_gun->draw();
 }
 

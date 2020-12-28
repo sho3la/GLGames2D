@@ -8,7 +8,7 @@
 class Gun
 {
 public:
-	Gun(Texture2D* bullet_tex, glm::vec2 fire_direction);
+	Gun(Texture2D* sprite, glm::vec2 fire_direction);
 
 	~Gun();
 

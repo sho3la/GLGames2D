@@ -9,7 +9,7 @@
 class Player
 {
 public:
-	Player();
+	Player(Texture2D* sprite);
 
 	~Player();
 
@@ -22,15 +22,13 @@ public:
 
 	void animate(float time);
 
-	std::shared_ptr<Texture2D> ship_texture;
-	std::shared_ptr<Rectangle> ship_rect;
+	Texture2D* sprite_tex;
 
-	std::shared_ptr<Texture2D> enginefire_texture;
+	std::shared_ptr<Rectangle> ship_rect;
 	std::shared_ptr<Rectangle> enginefire_rect;
 	std::vector<Rectangle> enginefire_frames;
 
 	std::shared_ptr<Gun> ship_gun;
-	std::shared_ptr<Texture2D> bullet_texture;
 
 	int current_frame;
 	float frame_time;

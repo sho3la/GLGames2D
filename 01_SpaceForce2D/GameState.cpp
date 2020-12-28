@@ -4,9 +4,11 @@
 
 GameState::GameState()
 {
-	m_player = std::make_shared<Player>();
+	spritesheet_tex = std::make_shared<Texture2D>("res/spritesheet.png");
+
+	m_player = std::make_shared<Player>(spritesheet_tex.get());
 	m_bg = std::make_shared<Background>();
-	m_enemy = std::make_shared<Enemy>();
+	m_enemy = std::make_shared<Enemy>(spritesheet_tex.get());
 }
 
 GameState::~GameState()
