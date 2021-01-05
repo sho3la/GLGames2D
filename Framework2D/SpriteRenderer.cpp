@@ -72,9 +72,24 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect)
 
 	shaderptr->Send_Mat4("projection", proj);
 
+
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x , rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f) , glm::vec3(rect.m_position, 0.0f)) * 
-		glm::rotate(glm::mat4(1.0f), rect.rotation , glm::vec3(0,0,1)) * 
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size,1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);
@@ -105,9 +120,23 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, glm::vec4 color
 
 	shaderptr->Send_Mat4("projection", proj);
 
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x, rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
-		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);
@@ -139,9 +168,23 @@ void SpriteRenderer::Draw(Texture2D *texture, Rectangle& rect, glm::vec2 flip, g
 
 	shaderptr->Send_Mat4("projection", proj);
 
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x, rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
-		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);
@@ -173,9 +216,23 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, float uv_x, flo
 
 	shaderptr->Send_Mat4("projection", proj);
 
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x, rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
-		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);
@@ -207,9 +264,23 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, Rectangle & uv_
 
 	shaderptr->Send_Mat4("projection", proj);
 
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x, rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
-		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);
@@ -264,9 +335,23 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, Rectangle & uv_
 
 	shaderptr->Send_Mat4("projection", proj);
 
+	glm::mat4 rotate_around_origin = glm::mat4(1);
+	if (rect.m_origin.x != 0 || rect.m_origin.y != 0)
+	{
+		rotate_around_origin = glm::translate(glm::mat4(1),
+			glm::vec3(rect.m_origin.x - rect.m_position.x, rect.m_origin.y - rect.m_position.y, 0));
+		rotate_around_origin = glm::rotate(rotate_around_origin, glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+		rotate_around_origin = glm::translate(rotate_around_origin,
+			glm::vec3(rect.m_position.x - rect.m_origin.x, rect.m_position.y - rect.m_origin.y, 0));
+	}
+	else
+	{
+		rotate_around_origin = glm::rotate(glm::mat4(1.0f), glm::radians(rect.rotation), glm::vec3(0, 0, 1));
+	}
+
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::translate(glm::mat4(1.0f), glm::vec3(rect.m_position, 0.0f)) *
-		glm::rotate(glm::mat4(1.0f), rect.rotation, glm::vec3(0, 0, 1)) *
+		rotate_around_origin *
 		glm::scale(glm::mat4(1.0f), glm::vec3(rect.m_size, 1));
 
 	shaderptr->Send_Mat4("model_matrx", model_mat);

@@ -13,6 +13,7 @@ Enemy::Enemy(Texture2D* sprite) :
 	// enemy rectangle : 0,0,145,186
 	// enemy rectangle flipped : 328,151,145,186
 	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(145, 186) / 2.5f);
+	ship_rect->rotation = 180.0f;
 
 	enginefire_rect = std::make_shared<Rectangle>(glm::vec2(0), glm::vec2(0));
 
@@ -24,7 +25,6 @@ Enemy::Enemy(Texture2D* sprite) :
 	/*
 	fireframe2 fliped: 267,69,21,72
 	fireframe1 fliped: 267,3,21,56
-
 	*/
 	Rectangle frame1;
 	frame1.m_position = glm::vec2(267, 69);
@@ -57,7 +57,7 @@ void Enemy::update(float time)
 
 void Enemy::draw()
 {
-	Engine::sp_renderer->Draw(sprite_tex, *ship_rect, Rectangle(328, 151, 145, 186), glm::vec2(-1), glm::vec4(1));
+	Engine::sp_renderer->Draw(sprite_tex, *ship_rect, Rectangle(0, 0, 145, 186), glm::vec4(1));
 	Engine::sp_renderer->Draw(sprite_tex, *enginefire_rect, enginefire_frames[current_frame], glm::vec2(-1), glm::vec4(1));
 	ship_gun->draw();
 }

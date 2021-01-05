@@ -35,8 +35,9 @@ public:
 
 	bool CircleCircle_Intersection(Rectangle& other);
 
-	float rotation;
+	float rotation; //in degree
 	glm::vec2 m_position;
 	glm::vec2 m_size;
+	glm::vec2 m_origin;
 	GBuffer buffers;
 };
