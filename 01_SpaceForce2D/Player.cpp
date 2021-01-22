@@ -32,7 +32,14 @@ void Player::update(float time)
 	//}
 
 	ship_gun->update(time);
-	ship_fire->update(time, ship_rect.get());
+
+	Rectangle realtive_rect;
+	realtive_rect.m_position = ship_rect->Centre();
+	realtive_rect.m_position += glm::vec2{ -4, (ship_rect->m_size.y / 2) };
+	realtive_rect.rotation = ship_rect->rotation;
+	realtive_rect.m_origin = ship_rect->m_origin;
+
+	ship_fire->update(time, realtive_rect);
 }
 
 void Player::draw()

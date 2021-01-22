@@ -12,7 +12,7 @@ public:
 	
 	~EngineFire();
 
-	void update(float time, Rectangle* parent);
+	void update(float time, Rectangle& parent);
 
 	void draw();
 private:

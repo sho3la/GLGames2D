@@ -14,6 +14,11 @@ EngineFire::EngineFire(Texture2D* sprite) :
 		fireframe2 : 185,196,21,72
 		fireframe1 : 185,278,21,56
 	*/
+
+	/*
+		fireframe2 fliped: 267,69,21,72
+		fireframe1 fliped: 267,3,21,56
+	*/
 	Rectangle frame1;
 	frame1.m_position = glm::vec2(185, 278);
 	frame1.m_size = glm::vec2(21, 56);
@@ -30,17 +35,12 @@ EngineFire::~EngineFire()
 {
 }
 
-void EngineFire::update(float time, Rectangle* parent)
+void EngineFire::update(float time, Rectangle& parent)
 {
-	// update position related to the parent
-	glm::vec2 enginefire_pos = parent->Centre();
-	enginefire_pos.x -= 4;
-	enginefire_pos.y += (parent->m_size.y / 2) - 5;
-	enginefire_rect->m_position = enginefire_pos;
-
-	// update rotation related to the parent
-	enginefire_rect->m_origin = parent->m_origin;
-	enginefire_rect->rotation = parent->rotation;
+	// update transform to related parent transform
+	enginefire_rect->m_position = parent.m_position;
+	enginefire_rect->m_origin = parent.m_origin;
+	enginefire_rect->rotation = parent.rotation;
 
 	animate(time);
 }

@@ -385,6 +385,7 @@ void SpriteRenderer::Draw(Texture2D * texture, Rectangle & rect, Rectangle & uv_
 		glBindBuffer(GL_ARRAY_BUFFER, rect.buffers.UVBO);
 		void* gpubuffer = nullptr;
 		gpubuffer = glMapBufferRange(GL_ARRAY_BUFFER, 0, 6 * sizeof(glm::vec2), GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT);
+		auto xx = glGetError();
 		memcpy(gpubuffer, uv.data(), 6 * sizeof(glm::vec2));
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -6,6 +6,7 @@ Rectangle::Rectangle() :
 	rotation(0),
 	m_origin(glm::vec2(0))
 {
+	int x = 0;
 }
 
 Rectangle::Rectangle(float x, float y, float width, float height)

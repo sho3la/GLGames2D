@@ -16,6 +16,7 @@ public:
 
 	void draw() override;
 
+	std::shared_ptr<Enemy> m_enemy;
 	std::shared_ptr<Player> m_player;
 	std::shared_ptr<Background> m_bg;
 
