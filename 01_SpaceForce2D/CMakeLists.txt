@@ -20,6 +20,7 @@ set(HEADER_FILES
 	GameState.h
 	Player.h
 	Background.h
+	EngineFire.h
 	Gun.h
 	Enemy.h
 	Explosion.h
@@ -33,6 +34,7 @@ set(SOURCE_FILES
 	GameState.cpp
 	Player.cpp
 	Background.cpp
+	EngineFire.cpp
 	Gun.cpp
 	Enemy.cpp
 	Explosion.cpp
