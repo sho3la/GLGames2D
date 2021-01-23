@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "Background.h"
 #include "Enemy.h"
-#include "Explosion.h"
 
 class GameState : public State
 {
@@ -21,7 +20,4 @@ public:
 	std::shared_ptr<Background> m_bg;
 
 	std::shared_ptr<Texture2D> spritesheet_tex;
-	std::shared_ptr<Texture2D> explosion_tex;
-
-	std::shared_ptr<Explosion> exp;
 };
