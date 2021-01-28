@@ -2,7 +2,7 @@
 #include "State.h"
 #include "Player.h"
 #include "Background.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 
 class GameState : public State
 {
@@ -15,7 +15,7 @@ public:
 
 	void draw() override;
 
-	std::shared_ptr<Enemy> m_enemy;
+	std::shared_ptr<EnemyManager> m_enemymanager;
 	std::shared_ptr<Player> m_player;
 	std::shared_ptr<Background> m_bg;
 

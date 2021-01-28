@@ -10,7 +10,7 @@
 class Enemy
 {
 public:
-	Enemy(Texture2D* sprite);
+	Enemy(Texture2D* sprite, glm::vec2 position);
 
 	~Enemy();
 
@@ -18,9 +18,9 @@ public:
 
 	void draw();
 
-private:
-	void move(float time);
+	void move_on_yaxis(float time, float direction, float end_y);
 
+private:
 	float movement_speed;
 	Texture2D* sprite_tex;
 	std::shared_ptr<Gun> ship_gun;

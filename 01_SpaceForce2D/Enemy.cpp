@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "Engine.h"
 
-Enemy::Enemy(Texture2D* sprite) : 
+Enemy::Enemy(Texture2D* sprite, glm::vec2 position) :
 	movement_speed(700.0f)
 {
 
@@ -9,7 +9,7 @@ Enemy::Enemy(Texture2D* sprite) :
 
 	// enemy rectangle : 0,0,145,186
 	// enemy rectangle flipped : 328,151,145,186
-	ship_rect = std::make_shared<Rectangle>(glm::vec2(100, 100), glm::vec2(145, 186) / 2.5f);
+	ship_rect = std::make_shared<Rectangle>(position, glm::vec2(145, 186) / 2.5f);
 	ship_rect->rotation = 180.0f;
 
 	ship_gun = std::make_shared<Gun>(sprite_tex, glm::vec2(0, 1));
@@ -38,6 +38,10 @@ void Enemy::draw()
 	ship_gun->draw();
 }
 
-void Enemy::move(float time)
+void Enemy::move_on_yaxis(float time, float direction, float end_y)
 {
+	if (ship_rect->m_position.y <= end_y * -direction)
+		return;
+
+	ship_rect->m_position.y += (time * movement_speed) * -direction;
 }
